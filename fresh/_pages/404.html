@@ -1,7 +1,67 @@
 ---
 title: 404 Error
-layout: post
 permalink: /404/
+cage:
+  title: "Comfort yourself with our god Nicolas Cage"
+  url: "https://www.placecage.com/"
+  key: "56a4f1cc-7f60-468d-9dba-e4b6f04b7c7d" # See https://stackoverflow.com/questions/21939713/hide-api-key-for-a-github-page
+quote: 
+  url: "https://api.quotable.io/random"
+comment: "<em>Jaja bandido! Ha intentado entrar en un lugar que no existe y hay 99,999% de posibilidades de que
+          sea un error del mal programador que hizo esta página.
+         <br/>"
 ---
 
-Nothing found! Try again.
+<div>
+  <style>
+  img, #quote, #comment-cage {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #author {
+    float: right;
+  }
+  </style>
+
+{{ page.comment }}
+
+  <div id="comment-cage"></div>
+  <div id="cage"></div>
+  <br/>
+  <div id="quote"></div>
+  <div id="author"></div>
+
+
+  <script type="text/javascript">
+
+  /*
+    https://www.placecage.com/
+  */
+ function randomFromInterval(min, max) {
+   return Math.floor(Math.random() * (max - min + 1) + min);
+ }
+  let URL = '{{ page.cage.url }}' + `/${randomFromInterval(200,400)}/${randomFromInterval(200,400)}`;
+
+  (async function() {
+    try {
+      
+      let divTitle = document.getElementById("comment-cage");
+      let divcage = document.getElementById("cage"); 
+      let img = document.createElement("img");
+      img.src = URL;
+      let title = document.createElement("h2");
+      title.innerText = "{{ page.cage.title }}";  
+      divTitle.appendChild(title);
+      divcage.appendChild(img);   
+
+      const quoteDiv = document.getElementById("quote");
+      const authorDiv = document.getElementById("author");
+    }
+    catch(e) { 
+      console.log(e);
+    }
+  })();
+  </script>
+
+</div>
