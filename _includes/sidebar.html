@@ -2,12 +2,12 @@
 
   <div class="sidebar-container">
     <div class="sidebar-logo">
-      <a href="{{site.baseurl}}/" class="logo">{% if site.name %}{{site.name}}{% else %}Fresh{% endif %}</a>
+      <a href="{{ site.url }}{{site.baseurl}}/" class="logo">{% if site.name %}{{site.name}}{% else %}Fresh{% endif %}</a>
     </div>
 
     <menu class="sidebar-menu">
       {% for item in site.data.menu %}
-      <li class="menu-items"><a class="menu-links" href="{{site.baseurl}}{{ item.link }}">{{ item.name }}</a></li>
+      <li class="menu-items"><a class="menu-links" href="{{ site.url }}{{site.baseurl}}{{ item.link }}">{{ item.name }}</a></li>
       {% endfor %}
     </menu>
 

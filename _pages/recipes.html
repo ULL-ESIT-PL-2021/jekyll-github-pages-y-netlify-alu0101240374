@@ -11,7 +11,7 @@ permalink: /recipes/
 <ul>
   {% for recipe in site.recipes %}
     <li>
-      <h2><a href="{{site.baseurl}}{{ recipe.url }}">{{ recipe.name }}</a></h2>
+      <h2><a href="{{ site.url }}{{site.baseurl}}{{ recipe.url }}">{{ recipe.name }}</a></h2>
     </li>
   {% endfor %}
 </ul>

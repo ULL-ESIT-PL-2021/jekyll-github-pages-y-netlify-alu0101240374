@@ -5,7 +5,7 @@ description: > # this means to ignore newlines until "baseurl:"
   Blog personal para subir artículos y mi vida diaria.
 permalink: ':title/'
 baseurl: "/jekyll-github-pages-y-netlify-alu0101240374" # the subpath of your site, e.g. /blog
-url: "artemsheludko.pw" # the base hostname & protocol for your site, e.g. http://example.com
+url: "http://localhost:4000/" # the base hostname & protocol for your site, e.g. http://example.com
 
 collections:
   recipes:
