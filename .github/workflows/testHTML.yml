@@ -11,15 +11,4 @@ jobs:
         with:
           ruby-version: 2.7.x
       - run: bundle install
-      - run: bundle exec jekyll build
-      - uses: anishathalye/proof-html@v1
-        with:
-          directory: ./_site
-          enforce_https: false
-          tokens: |
-            {"https://github.com": "${{ secrets.GITHUB_TOKEN }}"}
-          url_ignore: |
-            http://www.example.com/
-            https://en.wikipedia.org/wiki/Main_Page
-          url_ignore_re: |
-            ^https://twitter.com/
+      - run: rake test
