@@ -1,7 +1,6 @@
 ---
 title:  "Bienvenido"
 img: yo_chiquito.jpg
-date: 2021-03-29
 description: Bienvenida a mi nueva página web
 ---
 
