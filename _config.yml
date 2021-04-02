@@ -52,4 +52,5 @@ gems:
 exclude:
   - Gemfile
   - Gemfile.lock
+exclude: [ vendor ]
 include: [_pages]
