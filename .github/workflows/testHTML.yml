@@ -10,6 +10,7 @@ jobs:
       - uses: actions/setup-ruby@v1
         with:
           ruby-version: 2.7.x
+      - run: bundle install
       - run: bundle exec jekyll build
       - uses: anishathalye/proof-html@v1
         with:
