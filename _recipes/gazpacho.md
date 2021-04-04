@@ -1,6 +1,7 @@
 ---
 name: Gazpacho
 img: gazpacho.jpg
+tags: tomate sopa
 ---
 
 El gazpacho es una sopa fría servida habitualmente como primer plato. De elaboración muy sencilla y a la que se le añaden diferentes hortalizas y verduras, aliño con aceite de oliva virgen extra, vinagre y sal.  

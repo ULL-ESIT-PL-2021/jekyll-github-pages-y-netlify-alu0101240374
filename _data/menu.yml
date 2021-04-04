@@ -6,3 +6,5 @@
   link: /recipes/
 - name: Posts
   link: /posts/
+- name: Tags
+  link: /tags/

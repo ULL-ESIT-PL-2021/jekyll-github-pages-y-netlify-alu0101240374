@@ -12,6 +12,10 @@ layout: default
       {% endif %}
       {{page.content | markdownify}}
     </div>
+    {% for tag in page.tags %}
+      <a href="{{ site.url }}{{site.baseurl }}/tags">{{ tag }}</a>
+      </ul>
+    {% endfor %}
     {% include disqus.html %}
   </div>
 </article>
