@@ -13,7 +13,7 @@ La página usa un directorio \_data para gestionar los enlaces de la sidebar de 
 
 Para la práctica se recomiendo usar Minimal Mistakes, pero para ñadir un toque de originalidad se ha usado Fresh, este es el estado original de la página si usamos este tema.
 
-FOTO
+![fresh](./informe/fresh.png)
 
 Tras haber instalado la plantilla, se cambiaron elementos como las redes sociales de la sidebar, o se añadió el layout para las collections.
 
@@ -58,7 +58,7 @@ function randomFromInterval(min, max) {
 La función de generar un número aleatorio es necesaria porque la API que se utiliza requiere de que escribas en la url dos número indicando el tamaño de la foto.
 La página en cuestión sería la siguiente:  
 
-FOTO
+![404](./informe/404.png)
 
 ## Html proofer
 
