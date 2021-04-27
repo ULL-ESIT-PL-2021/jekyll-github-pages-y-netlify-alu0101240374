@@ -18,3 +18,5 @@ FOTO
 Tras haber instalado la plantilla, se cambiaron elementos como las redes sociales de la sidebar, o se añadió el layout para las collections.
 
 ## Despliegue e Github Pages
+
+Para poder desplegar la página que no sea en local, se le debe especificar la baseurl que tendrá para que funcionen correctamente los assets. 
