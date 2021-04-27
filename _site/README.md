@@ -18,3 +18,82 @@ FOTO
 Tras haber instalado la plantilla, se cambiaron elementos como las redes sociales de la sidebar, o se añadió el layout para las collections.
 
 ## Despliegue e Github Pages
+
+Para poder desplegar la página que no sea en local, se le debe especificar la baseurl que tendrá para que funcionen correctamente los assets. En el caso específico de github pages, publicará la página en al url baseurl: https://ull-esit-pl-2021.github.io", pero también tendrá una una baseurl con el nombre del repositorio, así que lo indicaremos en el apartado de baseurl: "/jekyll-github-pages-y-netlify-alu0101240374".
+
+## Despliegue en Netlify
+
+Para el despliegue en netlify son los mismos pasos que para github Pages(iniciar sesión, indicar un repositorio y elegir la rama), sin embargo, no hace falta poner una baseurl específica. Para arreglar este conflicto de fichero config separados, se crearon ramas para cada despliegue en específico, con sus baseurl correspondientes en los config.yml.
+
+## Página 404
+
+Si escribimos mal una dirección mientras navegamos, el servidor no sabrá como resolver esta situación y enviará un error al usuario. Para personalizar la experiencia del usuario existe una página original que indica que ha cometido un error e imprime una foto aleatoria de Nicolas Cage. Esto se hizo creando un html específico para el error 404 y añadiendo un contendero de tipo _script_. El código es el siguiente: 
+
+```js
+function randomFromInterval(min, max) {
+   return Math.floor(Math.random() * (max - min + 1) + min);
+ }
+  let URL = '{{ page.cage.url }}' + `/${randomFromInterval(400,600)}/${randomFromInterval(400,600)}`;
+
+  (async function() {
+    try {
+      
+      let divTitle = document.getElementById("comment-cage");
+      let divcage = document.getElementById("cage"); 
+      let img = document.createElement("img");
+      img.src = URL;
+      let title = document.createElement("h2");
+      title.innerText = "{{ page.cage.title }}";  
+      divTitle.appendChild(title);
+      divcage.appendChild(img);   
+
+      const quoteDiv = document.getElementById("quote");
+      const authorDiv = document.getElementById("author");
+    }
+    catch(e) { 
+      console.log(e);
+    }
+  })();
+```
+La función de generar un número aleatorio es necesaria porque la API que se utiliza requiere de que escribas en la url dos número indicando el tamaño de la foto.
+La página en cuestión sería la siguiente:  
+
+FOTO
+
+## Html proofer
+
+Existen herramientas para comprobar si nuestra página funciona. La que vamos a usar para esta práctica es HTML proofer. Esta herramienta comprueba que todas las imágenes y enlaces de nuestra página existen. Para usarla creamos un rakefile que ejecuta el programa si escribimos _rake test_. El script es el siguiente:
+
+```rake
+require 'html-proofer'
+desc "test links in the build web site"
+task :test do
+  sh "bundle exec jekyll build"
+  options = { 
+    :assume_extension => true, 
+    :disable_external => true, 
+    :empty_alt_ignore => true,
+    :file_ignore => [ %r{categories} ]
+  }
+  HTMLProofer.check_directory("./_site", options).run
+end
+
+```
+También he añadido una action para que este test se dispare cuando hagamos un push.
+
+```yml
+name: CI
+on:
+  push:
+    branches: [ master ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.7.x
+      - run: bundle install
+      - run: rake test
+```
