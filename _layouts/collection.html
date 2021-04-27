@@ -4,14 +4,18 @@ layout: default
 <article class="page-article">
   <div class="wrap-content">
     <header class="page-header">
-      <h1 class="page-title">{{page.title}}</h1>
+      <h1 class="page-title">{{page.name}}</h1>
     </header>
     <div class="page-content">
       {% if page.img %}
-      <img class="page-img" src={{ site.url }}{{ "/assets/img/" | prepend: site.baseurl | preprend: site.url | append : page.img}} alt="{{page.title}}">
+      <img class="page-img" src={{ site.url }}{{ "/assets/img/" | prepend: site.baseurl | append : page.img}} alt="{{page.title}}">
       {% endif %}
       {{page.content | markdownify}}
     </div>
+    {% for tag in page.tags %}
+      <a href="{{ site.url }}{{site.baseurl }}/tags">{{ tag }}</a>
+      </ul>
+    {% endfor %}
     {% include disqus.html %}
   </div>
 </article>

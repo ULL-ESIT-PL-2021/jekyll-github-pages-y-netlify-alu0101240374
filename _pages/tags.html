@@ -1,0 +1,25 @@
+---
+title: Tags
+layout: default
+permalink: /tags/
+---
+{% for tag in site.tags %}
+  <h3>{{ tag[0] }}</h3>
+  <ul>
+    {% for post in tag[1] %}
+      <li><a href="{{ site.url }}{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
+    {% endfor %}
+  </ul>
+{% endfor %}
+
+{% assign tags = site.recipes | map: 'tags' |join: ',' | split: ',' | uniq %}
+{% for tag in tags %}
+  <h3>{{ tag }}</h3>
+  <ul>
+  {% for recipe in site.recipes %}
+    {% if recipe.tags contains tag %}
+    <li><a href="{{ site.url }}{{ site.baseurl }}{{ recipe.url }}">{{ recipe.name }}</a></li>
+    {% endif %}
+  {% endfor %}
+  </ul>
+{% endfor %}
